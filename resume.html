@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Download CV</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Download my CV/Resume</h1><br>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="vertical-center">
+                <button class="download" onclick="downloadFile()"><img src="assets/download_icon.jpg"></button><br>
+                <script>
+                    function downloadFile() {
+                        const link = document.createElement('a');
+                        link.href = 'assets/Resume_Prithviraj_Mody.pdf';  
+                        link.download = 'Resume_Prithviraj_Mody.pdf';      
+                        link.click();                      
+                    }
+                </script>
+            </div>
+        </div>
+        <section>
+            <br><br><br><a href="index.html">Back to Homepage</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Prithviraj Mody. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script> <!-- Link to your JS file -->
+</body>
+</html>
