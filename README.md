@@ -21,7 +21,7 @@ I build software that turns complex data into usable tools: EEG workflows, agent
 ## Experience
 
 **AI Intern · Demolish Foods · August–September 2026**  
-Built an evidence-linked R&D knowledge system with FastAPI, PostgreSQL, and React/TypeScript. The system ingests experiment documents into human-reviewed records, supports comparison and source-linked answers, and uses Google SSO with role-based access. Presented a live demo to the R&D team. Employer source and data are private.
+Built internal AI tooling for the R&D team and presented a live demo. Project details are under NDA.
 
 **Undergraduate Research Assistant · Z-Lab, UC Davis · May 2026–present**  
 Built and evaluated whole-night intracranial EEG sleep-staging pipelines. Investigated a feature-definition error and a ground-truth label mismatch to make benchmark comparisons interpretable.
