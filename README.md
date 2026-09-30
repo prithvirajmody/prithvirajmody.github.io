@@ -15,7 +15,7 @@ I build software that turns complex data into usable tools: EEG workflows, agent
 | Meridian | Semantic graph platform with domain adapters, structural diffs, and a React Studio | TypeScript, React, SQLite; versioned plugins and graph validation | Private source; [project overview](#meridian--semantic-graph-platform) |
 | Second Brain | Personal knowledge system with communication ingestion, indexed retrieval, cited answers, and scheduled briefings | Python, Claude Code, SQLite, discord.py, systemd | Private personal system; [project overview](#second-brain--personal-knowledge-and-automation) |
 | Sleep staging | Intracranial EEG evaluation pipeline comparing classical ML with SleepSEEG | scikit-learn, MNE; patient-held-out evaluation and benchmark debugging | Research source private; [results summary](#research--intracranial-eeg-sleep-staging) |
-| Kubera | Declarative strategy compiler with deterministic evaluation and decision logs | Python; ambiguity detection, constrained generated code, reproducible replay | Private source; [project overview](#kubera--reproducible-strategy-evaluation) |
+| Kubera | Paper-trading arena that races NSE strategy variants in simulated accounts and ranks them by the lower bound of a bootstrap 95% CI on expectancy | Python, pandas, FastAPI, React; walk-forward validation, backtest-gated Claude Agent SDK agents, offline CI | Private source; [project overview](#kubera--paper-trading-arena) |
 | [NeuralVLA](https://github.com/prithvirajmody/NeuralVLA) | Research project on an EEG-guided supernumerary robotic arm | BCI, robotics, vision-language-action models | Public design overview; implementation not published here |
 
 ## Experience
@@ -82,11 +82,20 @@ The documented evaluation contains 14 patients and 15,709 non-artifact neocortic
 
 The practical contribution includes tracing misleading benchmarks to feature and label definitions, rather than relying on aggregate accuracy alone.
 
-## Kubera — reproducible strategy evaluation
+## Kubera — paper-trading arena
 
-The currently checked-in version interprets a strategy document once, checks the generated Python against a constrained callable surface, and evaluates completed bars deterministically. Its decision log records the gates behind both signals and non-signals.
+Kubera races trading-strategy variants against each other in simulated ₹1,00,000 accounts on the same NSE bars, then asks whether any of them is more than noise.
 
-Its demonstrated end-to-end path uses synthetic fixtures. This portfolio does not claim validated market performance or an available live paper-trading arena.
+- Six variants trade each session: five built on three intraday strategies (opening-range breakout, VWAP mean reversion, momentum) and an SMA-crossover control with no thesis, the yardstick for the rest. A fairness check fails the cycle if any variant sees different bars.
+- The leaderboard ranks variants by the lower bound of a bootstrap 95% confidence interval on expectancy per trade, net of Indian trading costs, so a short lucky run can't lead.
+- Walk-forward validation, plus a random-entry control that keeps each strategy's exits and replaces its entry timing with a coin flip.
+- Claude Agent SDK agents write research notes, run risk reviews, and evolve the roster weekly. The optimizer acts only through gated tools: an admission protocol, backtest thresholds, and a forward-sample and confidence-interval gate for promotion. Hard risk limits run in deterministic code.
+- A read-only React console, with an offline demo that replays a recorded NSE session.
+- 768 Python tests and 63 console tests (Vitest and Playwright), run in CI with the network disabled.
+
+It's paper trading only: every account is simulated and there is no live order path. It makes no performance claim, and its own walk-forward validation found no variant with an edge over random entry. Market data is free, delayed NSE bars. The source is private because the same codebase holds a personal finance hub.
+
+Earlier work: Kubera started as a strategy compiler. It interpreted a strategy document once, checked the generated Python against a constrained callable surface, evaluated completed bars deterministically, and logged the gates behind every signal and non-signal. That version is preserved under a git tag.
 
 ## Technical toolkit
 
