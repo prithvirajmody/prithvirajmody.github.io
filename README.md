@@ -26,11 +26,17 @@ Built internal AI tooling for the R&D team and presented a live demo. Project de
 **Undergraduate Research Assistant · Z-Lab, UC Davis · May 2026–present**  
 Built and evaluated whole-night intracranial EEG sleep-staging pipelines. Investigated a feature-definition error and a ground-truth label mismatch to make benchmark comparisons interpretable.
 
-**Founder · Efferent Systems · June 2025–present**  
+**Founder & Lead Engineer · Efferent Systems · June 2025–present**  
 Lead a five-person team building PyBCI. Developed supporting hardware-free regression tooling and release/test automation.
 
 **Board Member & Projects Division Lead · UC Davis Neurotech**  
 Lead technical reviews of BCI projects and the NeuralVLA project.
+
+**Earlier experience**
+
+- Coding Internship at Axis Bank (2022)
+- Coding Internship at Cyware Labs (2022)
+- Coding Internship at Rubik's Data Science (2023)
 
 ## AutoBuild — governed agent workflows
 
@@ -109,6 +115,8 @@ Earlier work: Kubera started as a strategy compiler. It interpreted a strategy d
 
 ## About this repository
 
-This README is the public overview of my current engineering work. Private projects are summarized here without exposing personal notes, employer documents, or restricted research data. The HTML files in this repository are an earlier portfolio implementation.
+This README is the public overview of my current engineering work. Private projects are summarized here without exposing personal notes, employer documents, or restricted research data. The site at [prithvirajmody.github.io](https://prithvirajmody.github.io) is built from this README's content.
+
+- [ ] Change the site and this README together.
 
 For collaboration or internship discussions: [prithvirajmody@gmail.com](mailto:prithvirajmody@gmail.com).
