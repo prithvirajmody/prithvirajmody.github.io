@@ -1,120 +1,407 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Prithviraj Mody - Resume</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prithviraj Mody · Software engineering, applied ML, and neurotechnology</title>
+<meta name="description" content="Prithviraj Mody, Computer Science at UC Davis. I build software that turns complex data into usable tools: EEG workflows, agent orchestration, semantic graphs, and evidence-linked research systems.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://prithvirajmody.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prithvirajmody.github.io/">
+<meta property="og:title" content="Prithviraj Mody · Software engineering, applied ML, and neurotechnology">
+<meta property="og:description" content="Computer Science at UC Davis. I build software that turns complex data into usable tools: EEG workflows, agent orchestration, semantic graphs, and evidence-linked research systems.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Ctext x='16' y='21.5' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EPM%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #ffffff;
+  --fg: #1b1c1e;
+  --muted: #545a62;
+  --border: #dde0e4;
+  --surface: #f6f7f9;
+  --accent: #1f4fd1;
+  --accent-fg: #ffffff;
+  --feature: #eef3ff;
+  --feature-border: #aac0f2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121316;
+    --fg: #e6e7e9;
+    --muted: #a5abb3;
+    --border: #2d3036;
+    --surface: #1a1c20;
+    --accent: #8fb2ff;
+    --accent-fg: #0d1426;
+    --feature: #172038;
+    --feature-border: #34466f;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+.wrap { max-width: 60rem; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 40rem) { .wrap { padding: 0 24px; } }
+p, li, dd { max-width: 70ch; }
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3 { line-height: 1.25; }
+h2 { font-size: 1.5rem; margin: 0 0 1rem; }
+h3 { font-size: 1.0625rem; margin: 0 0 0.25rem; }
+.vh {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip { position: absolute; left: 16px; top: -100px; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); }
+.skip:focus { top: 16px; }
+
+/* Header */
+.site-header { padding: 3rem 0 2rem; }
+.site-header h1 { font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+.tagline { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.75rem; }
+.lede { margin: 0 0 1.5rem; color: var(--muted); }
+.links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; }
+.btn {
+  display: inline-block; padding: 0.4rem 0.85rem; border: 1px solid var(--accent);
+  border-radius: 6px; font-weight: 600; text-decoration: none; line-height: 1.4;
+}
+.btn:hover { text-decoration: underline; }
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+
+/* Section nav */
+.section-nav { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-nav ul { list-style: none; margin: 0; padding: 0.6rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-size: 0.9375rem; }
+
+/* Sections */
+main section { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+main section:first-child { border-top: 0; }
+.intro { color: var(--muted); margin: -0.5rem 0 1.25rem; }
+
+/* Project cards */
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 44rem) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card.featured { grid-column: 1 / -1; }
+}
+.card {
+  max-width: none; display: flex; flex-direction: column; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.25rem;
+}
+.card p { margin: 0 0 0.6rem; }
+.card .focus { font-size: 0.9375rem; color: var(--muted); }
+.card .access { margin: auto 0 0; padding-top: 0.6rem; border-top: 1px solid var(--border); font-size: 0.9375rem; }
+.label { font-weight: 600; }
+.card.featured { background: var(--feature); border-color: var(--feature-border); }
+.card.featured h3 { font-size: 1.25rem; }
+.tag { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 0.25rem 0 0.25rem; }
+
+/* Experience */
+.roles { list-style: none; margin: 0; padding: 0; }
+.roles > li { margin: 0 0 1.5rem; }
+.roles p { margin: 0.15rem 0 0; }
+.date { color: var(--muted); font-size: 0.9375rem; }
+.nowrap { white-space: nowrap; }
+.earlier ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+
+/* Research table */
+.table-wrap { overflow-x: auto; margin: 1rem 0 1.25rem; }
+table { border-collapse: collapse; width: 100%; max-width: 44rem; font-size: 0.9375rem; }
+th, td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+thead th { border-bottom: 2px solid var(--border); }
+tbody th { font-weight: 400; }
+.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Overviews */
+details { border: 1px solid var(--border); border-radius: 8px; margin: 0 0 0.75rem; }
+summary { cursor: pointer; padding: 0.85rem 1rem; font-weight: 600; }
+details[open] > summary { border-bottom: 1px solid var(--border); }
+.details-body { padding: 0.25rem 1rem 0.75rem; }
+.details-body ul { padding-left: 1.25rem; }
+.details-body li { margin: 0 0 0.35rem; }
+
+/* Second Brain flow */
+.flow { margin: 1rem 0; padding: 1rem; background: var(--surface); border-radius: 8px; font-size: 0.9375rem; }
+.flow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 0.5rem; }
+.flow-row:last-child { margin-bottom: 0; }
+.flow-branch { margin-left: 1.5rem; }
+.node { display: inline-block; padding: 0.15rem 0.55rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); }
+.step { display: inline-flex; align-items: center; gap: 0.4rem; }
+.arrow { color: var(--muted); }
+
+/* Toolkit and contact */
+.defs { margin: 0; }
+.defs > div { display: grid; grid-template-columns: 1fr; gap: 0 1rem; padding: 0.4rem 0; }
+@media (min-width: 40rem) { .defs > div { grid-template-columns: 9rem minmax(0, 1fr); } }
+.defs dt { font-weight: 600; }
+.defs dd { margin: 0; }
+
+.site-footer { border-top: 1px solid var(--border); padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: 0.875rem; }
+.site-footer p { margin: 0; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Prithviraj Mody's Resume</h1>
-    </header>
+<a class="skip" href="#main">Skip to content</a>
 
-    <main>
-        <section>
-            <h2>Personal Profile</h2>
-            <img src="assets/self_image.jpg" class="img1">  
-            <p>I am currently studying computer science at an undergraduate level in UC Davis. 
-               I am deeply interested in Physics and Computer Science. I love Coding
-                and have learnt several Computer Languages such as Python, Java &
-                C++. I am also familiar with several different types of AI algorithms as
-                well as advanced data structures. I am also familiar with Kali Linux
-                and have the knowledge to use basic ethical hacking libraries. I am
-                also the leader of my school's coding club.</p>
-            <h2>Education</h2>
-            <table border="1">
-                <thead>
-                  <th>
-                    Place
-                  </th>
-                  <th>
-                    Date
-                  </th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>The Cathedral and John Connon School</td>
-                    <td>2011 - 2022</td>
-                  </tr>
-                  <tr>
-                    <td>Dhirubai Ambani International School</td>
-                    <td>2022 - 2024</td>
-                  </tr>
-                  <tr>
-                    <td>University of California, Davis</td>
-                    <td>2024 - 2028</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-            
-                </tfoot>
-              </table>
-              <h2>Skills</h2>
-              <ul>
-                <li>Experience in Python, Java and C++</li>
-                <li>Know how to use Linux</li>
-                <li>AI and machine learning</li>
-                <li>Speaks English, Hindi and Spanish</li>
-                <li>Leadership Skills</li>
-                <li>Analytical Thinking</li>
-                <li>Quick Learner</li>
-              </ul>
-              <h2>Past Experiences</h2>
-              <table border="1">
-                <thead>
-                    <th>Experience</th>
-                    <th>Date (Year)</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Coding Internship at Axis Bank</td>
-                        <td>2022</td>
-                    </tr>
-                    <tr>
-                        <td>Coding Internship at Cyware Labs</td>
-                        <td>2022</td>
-                    </tr>
-                    <tr>
-                        <td>Coding Internship at Rubik's Data Science</td>
-                        <td>2023</td>
-                    </tr>
-                    <tr>
-                        <td>Participated in FRC tournament</td>
-                        <td>2023</td>
-                    </tr>
-                    <tr>
-                        <td>Built several coding projects</td>
-                        <td>2020 onwards</td>
-                    </tr>
-                </tbody>
-              </table>
-              <h2>Coding Projects</h2>
-              <ul>
-                <li>Voice enabled AI virtual assistant</li>
-                <li>Hand tracker/Computer vision project</li>
-                <li>Zoom meeting login automator</li>
-                <li>AI picture classifier to identify recyclable and organic items (with GUI)</li>
-                <li>NLP research project</li>
-                <li>Web scraper</li>
-              </ul>
-              <h2>Additional Hobbies and Interests</h2>
-              <ul>
-                <li>Participating in Model United Nations (MUN)</li>
-                <li>Adventure Sports (Swimming, Scuba Diving & Skiing)</li>
-                <li>Reading</li>
-                <li>Researching/Learning Science, Programming and Hacking concepts</li>
-                <li>Speech and Drama</li>
-                <li>Playing the Keyboard</li>
-              </ul>
-        </section>
-    </main>
+<header class="site-header">
+  <div class="wrap">
+    <h1>Prithviraj Mody</h1>
+    <p class="tagline">Computer Science at UC Davis · Software engineering, applied ML, and neurotechnology</p>
+    <p class="lede">I build software that turns complex data into usable tools: EEG workflows, agent orchestration, semantic graphs, and evidence-linked research systems.</p>
+    <ul class="links">
+      <li><a href="mailto:prithvirajmody@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/prithviraj-mody">LinkedIn</a></li>
+      <li><a href="https://github.com/prithvirajmody">GitHub</a></li>
+      <li><a class="btn btn-primary" href="assets/Resume_Prithviraj_Mody.pdf">Resume (PDF)</a></li>
+    </ul>
+  </div>
+</header>
 
-    <footer>
-        <a href="contact_me.html">Contact Me</a><br>
-        <a href="resume.html">Download CV</a>
-        <p>&copy; 2024 Prithviraj Mody. All rights reserved.</p>
-    </footer>
+<nav class="section-nav" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#overviews">Project overviews</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="wrap">
+
+    <section id="work" aria-labelledby="work-title">
+      <h2 id="work-title">Selected work</h2>
+      <p class="intro">Private projects are summarized here without exposing personal notes, employer documents, or restricted research data.</p>
+      <ul class="cards">
+        <li class="card featured">
+          <p class="tag">Public source · Live demo</p>
+          <h3><a href="https://github.com/prithvirajmody/Meridian">Meridian</a></h3>
+          <p>Semantic graph platform with domain adapters, structural diffs, and a React Studio.</p>
+          <p class="focus">TypeScript, React, SQLite; versioned plugins and graph validation</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://prithvirajmody.github.io/Meridian/">Live demo</a>
+            <a class="btn" href="https://github.com/prithvirajmody/Meridian">Public source (MIT)</a>
+            <a href="#meridian">Project overview<span class="vh"> of Meridian</span></a>
+          </div>
+        </li>
+        <li class="card">
+          <h3><a href="https://github.com/prithvirajmody/PyBCI-release">PyBCI</a></h3>
+          <p>Desktop workspace for EEG acquisition, preprocessing, visualization, and model training.</p>
+          <p class="focus">Python, PyQt5, FastAPI; service-backed desktop workflows and plugin contracts</p>
+          <p class="access"><span class="label">Access:</span> <a href="https://github.com/prithvirajmody/PyBCI-release">Public early-access downloads</a>; private source</p>
+        </li>
+        <li class="card">
+          <h3>AutoBuild</h3>
+          <p>Multi-agent engineering workflows with independent review gates, deterministic replay, and execution evidence.</p>
+          <p class="focus">Python, FastAPI, SQLite; isolated execution and auditability</p>
+          <p class="access"><span class="label">Access:</span> Private source; <a href="#autobuild">project overview<span class="vh"> of AutoBuild</span></a></p>
+        </li>
+        <li class="card">
+          <h3>Second Brain</h3>
+          <p>Personal knowledge system with communication ingestion, indexed retrieval, cited answers, and scheduled briefings.</p>
+          <p class="focus">Python, Claude Code, SQLite, discord.py, systemd</p>
+          <p class="access"><span class="label">Access:</span> Private personal system; <a href="#second-brain">project overview<span class="vh"> of Second Brain</span></a></p>
+        </li>
+        <li class="card">
+          <h3>Sleep staging</h3>
+          <p>Intracranial EEG evaluation pipeline comparing classical ML with SleepSEEG.</p>
+          <p class="focus">scikit-learn, MNE; patient-held-out evaluation and benchmark debugging</p>
+          <p class="access"><span class="label">Access:</span> Research source private; <a href="#research">results summary</a></p>
+        </li>
+        <li class="card">
+          <h3>Kubera</h3>
+          <p>Paper-trading arena that races NSE strategy variants in simulated accounts and ranks them by the lower bound of a bootstrap 95% CI on expectancy.</p>
+          <p class="focus">Python, pandas, FastAPI, React; walk-forward validation, backtest-gated Claude Agent SDK agents, offline CI</p>
+          <p class="access"><span class="label">Access:</span> Private source; <a href="#kubera">project overview<span class="vh"> of Kubera</span></a></p>
+        </li>
+        <li class="card">
+          <h3><a href="https://github.com/prithvirajmody/NeuralVLA">NeuralVLA</a></h3>
+          <p>Research project on an EEG-guided supernumerary robotic arm.</p>
+          <p class="focus">BCI, robotics, vision-language-action models</p>
+          <p class="access"><span class="label">Access:</span> <a href="https://github.com/prithvirajmody/NeuralVLA">Public design overview</a>; implementation not published here</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      <ul class="roles">
+        <li>
+          <h3>AI Intern · Demolish Foods</h3>
+          <p class="date">August–September 2026</p>
+          <p>Built internal AI tooling for the R&amp;D team and presented a live demo. Project details are under NDA.</p>
+        </li>
+        <li>
+          <h3>Undergraduate Research Assistant · <span class="nowrap">Z-Lab</span>, UC Davis</h3>
+          <p class="date">May 2026–present</p>
+          <p>Built and evaluated whole-night intracranial EEG sleep-staging pipelines. Investigated a feature-definition error and a ground-truth label mismatch to make benchmark comparisons interpretable.</p>
+        </li>
+        <li>
+          <h3>Founder &amp; Lead Engineer · Efferent Systems</h3>
+          <p class="date">June 2025–present</p>
+          <p>Lead a five-person team building PyBCI. Developed supporting hardware-free regression tooling and release/test automation.</p>
+        </li>
+        <li>
+          <h3>Board Member &amp; Projects Division Lead · UC Davis Neurotech</h3>
+          <p>Lead technical reviews of BCI projects and the NeuralVLA project.</p>
+        </li>
+      </ul>
+      <div class="earlier">
+        <h3>Earlier experience</h3>
+        <ul>
+          <li>Coding Internship at Axis Bank (2022)</li>
+          <li>Coding Internship at Cyware Labs (2022)</li>
+          <li>Coding Internship at Rubik's Data Science (2023)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="research" aria-labelledby="research-title">
+      <h2 id="research-title">Research — intracranial EEG sleep staging</h2>
+      <p>The project compares classical ML against a SleepSEEG reference scorer using patient-held-out evaluation.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Evaluation</th>
+              <th scope="col" class="num">Classical ML</th>
+              <th scope="col" class="num">SleepSEEG</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Pooled Cohen's κ, three-class Wake/NREM/REM, neocortical channel</th>
+              <td class="num"><strong>0.559</strong></td>
+              <td class="num"><strong>0.389</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The documented evaluation contains 14 patients and 15,709 non-artifact neocortical epochs for ML; SleepSEEG contributes 15,700 epochs because of tail-length rounding. These are pooled metrics, distinct from mean per-patient LOSO metrics. Hippocampal evaluation is confounded by the available neocortical labels and is not presented as validated hippocampal accuracy.</p>
+      <p>The practical contribution includes tracing misleading benchmarks to feature and label definitions, rather than relying on aggregate accuracy alone.</p>
+    </section>
+
+    <section id="overviews" aria-labelledby="overviews-title">
+      <h2 id="overviews-title">Project overviews</h2>
+
+      <details id="autobuild">
+        <summary>AutoBuild — governed agent workflows</summary>
+        <div class="details-body">
+          <p>AutoBuild separates proposing a change, executing it, verifying it, and approving it. Role outputs become validated artifacts with provenance; independent gates control progression and promotion.</p>
+          <ul>
+            <li>PM, engineering management, Tech Lead, Engineer, and QA workflows.</li>
+            <li>Bounded patch application and isolated execution.</li>
+            <li>Deterministic replay for development without a live model call.</li>
+            <li>Organization authoring and operator console.</li>
+            <li>Tamper-evident evidence and explicit human decisions.</li>
+          </ul>
+          <p>The engineering challenge is preserving a trustworthy execution history while models propose changes. Current development includes additional integration and containment work; this overview does not imply every CI gate is passing.</p>
+        </div>
+      </details>
+
+      <details id="meridian">
+        <summary>Meridian — semantic graph platform</summary>
+        <div class="details-body">
+          <p>Meridian gives different sources a common graph representation, then validates, compares, and presents that structure.</p>
+          <ul>
+            <li>Domain adapters for notes and code, alongside other structured domains.</li>
+            <li>Versioned plugin contracts and conformance checks.</li>
+            <li>Structural graph differences with provenance.</li>
+            <li>React Studio for navigating and inspecting graph representations.</li>
+          </ul>
+          <p>The engineering challenge is keeping source-specific parsing separate from the shared graph and rendering layers.</p>
+          <p>Source: <a href="https://github.com/prithvirajmody/Meridian">github.com/prithvirajmody/Meridian</a> (MIT). <a href="https://prithvirajmody.github.io/Meridian/">Live demo</a>: the Studio running in the browser on Meridian's own package graph.</p>
+        </div>
+      </details>
+
+      <details id="second-brain">
+        <summary>Second Brain — personal knowledge and automation</summary>
+        <div class="details-body">
+          <p>A personal agent connects an Obsidian vault, communication ingestion, indexed retrieval, and scheduled routines. Discord provides a remote interface; responses can cite their source notes.</p>
+          <figure class="flow" role="img" aria-label="Flow diagram: incoming information goes to inbox and source notes. From there, indexed retrieval leads to cited answers, and triage and review leads to tasks and daily brief.">
+            <div class="flow-row"><span class="node">Incoming information</span><span class="step"><span class="arrow">→</span><span class="node">Inbox and source notes</span></span></div>
+            <div class="flow-row flow-branch"><span class="step"><span class="arrow">↳</span><span class="node">Indexed retrieval</span></span><span class="step"><span class="arrow">→</span><span class="node">Cited answers</span></span></div>
+            <div class="flow-row flow-branch"><span class="step"><span class="arrow">↳</span><span class="node">Triage and review</span></span><span class="step"><span class="arrow">→</span><span class="node">Tasks and daily brief</span></span></div>
+          </figure>
+          <p>The original vault contains private communications and personal records. This overview describes the system without publishing those records.</p>
+        </div>
+      </details>
+
+      <details id="kubera">
+        <summary>Kubera — paper-trading arena</summary>
+        <div class="details-body">
+          <p>Kubera races trading-strategy variants against each other in simulated ₹1,00,000 accounts on the same NSE bars, then asks whether any of them is more than noise.</p>
+          <ul>
+            <li>Six variants trade each session: five built on three intraday strategies (opening-range breakout, VWAP mean reversion, momentum) and an SMA-crossover control with no thesis, the yardstick for the rest. A fairness check fails the cycle if any variant sees different bars.</li>
+            <li>The leaderboard ranks variants by the lower bound of a bootstrap 95% confidence interval on expectancy per trade, net of Indian trading costs, so a short lucky run can't lead.</li>
+            <li>Walk-forward validation, plus a random-entry control that keeps each strategy's exits and replaces its entry timing with a coin flip.</li>
+            <li>Claude Agent SDK agents write research notes, run risk reviews, and evolve the roster weekly. The optimizer acts only through gated tools: an admission protocol, backtest thresholds, and a forward-sample and confidence-interval gate for promotion. Hard risk limits run in deterministic code.</li>
+            <li>A read-only React console, with an offline demo that replays a recorded NSE session.</li>
+            <li>768 Python tests and 63 console tests (Vitest and Playwright), run in CI with the network disabled.</li>
+          </ul>
+          <p>It's paper trading only: every account is simulated and there is no live order path. It makes no performance claim, and its own walk-forward validation found no variant with an edge over random entry. Market data is free, delayed NSE bars. The source is private because the same codebase holds a personal finance hub.</p>
+          <p>Earlier work: Kubera started as a strategy compiler. It interpreted a strategy document once, checked the generated Python against a constrained callable surface, evaluated completed bars deterministically, and logged the gates behind every signal and non-signal. That version is preserved under a git tag.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="toolkit" aria-labelledby="toolkit-title">
+      <h2 id="toolkit-title">Technical toolkit</h2>
+      <dl class="defs">
+        <div><dt>Languages</dt><dd>Python, TypeScript, C++, SQL</dd></div>
+        <div><dt>Backend</dt><dd>FastAPI, PostgreSQL, SQLite</dd></div>
+        <div><dt>Interfaces</dt><dd>React, Vite, PyQt5</dd></div>
+        <div><dt>ML/data</dt><dd>scikit-learn, MNE, NumPy, pandas, SciPy</dd></div>
+        <div><dt>Engineering</dt><dd>Linux, GitHub Actions, containers, pytest, Playwright, systemd</dd></div>
+      </dl>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>For collaboration or internship discussions:</p>
+      <dl class="defs">
+        <div><dt>Email</dt><dd><a href="mailto:prithvirajmody@gmail.com">prithvirajmody@gmail.com</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/prithviraj-mody">linkedin.com/in/prithviraj-mody</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/prithvirajmody">github.com/prithvirajmody</a></dd></div>
+      </dl>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Prithviraj Mody</p>
+  </div>
+</footer>
+
+<script>
+  // Open a collapsed project overview when a link or URL fragment points at it.
+  (function () {
+    function open(hash) {
+      var el = hash && document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (el && el.tagName === "DETAILS") el.open = true;
+    }
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (a) open(a.getAttribute("href"));
+    });
+    window.addEventListener("hashchange", function () { open(location.hash); });
+    open(location.hash);
+  })();
+</script>
 </body>
 </html>
