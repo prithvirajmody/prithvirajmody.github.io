@@ -117,6 +117,6 @@ Earlier work: Kubera started as a strategy compiler. It interpreted a strategy d
 
 This README is the public overview of my current engineering work. Private projects are summarized here without exposing personal notes, employer documents, or restricted research data. The site at [prithvirajmody.github.io](https://prithvirajmody.github.io) is built from this README's content.
 
-- [ ] Change the site and this README together.
+<!-- Maintainer note: change the site (index.html) and this README together. -->
 
 For collaboration or internship discussions: [prithvirajmody@gmail.com](mailto:prithvirajmody@gmail.com).
