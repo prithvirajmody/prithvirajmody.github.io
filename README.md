@@ -12,7 +12,7 @@ I build software that turns complex data into usable tools: EEG workflows, agent
 |---|---|---|---|
 | [PyBCI](https://github.com/prithvirajmody/PyBCI-release) | Desktop workspace for EEG acquisition, preprocessing, visualization, and model training | Python, PyQt5, FastAPI; service-backed desktop workflows and plugin contracts | Public early-access downloads; private source |
 | AutoBuild | Multi-agent engineering workflows with independent review gates, deterministic replay, and execution evidence | Python, FastAPI, SQLite; isolated execution and auditability | Private source; [project overview](#autobuild--governed-agent-workflows) |
-| Meridian | Semantic graph platform with domain adapters, structural diffs, and a React Studio | TypeScript, React, SQLite; versioned plugins and graph validation | Private source; [project overview](#meridian--semantic-graph-platform) |
+| [Meridian](https://github.com/prithvirajmody/Meridian) | Semantic graph platform with domain adapters, structural diffs, and a React Studio | TypeScript, React, SQLite; versioned plugins and graph validation | Public source (MIT); [live demo](https://prithvirajmody.github.io/Meridian/); [project overview](#meridian--semantic-graph-platform) |
 | Second Brain | Personal knowledge system with communication ingestion, indexed retrieval, cited answers, and scheduled briefings | Python, Claude Code, SQLite, discord.py, systemd | Private personal system; [project overview](#second-brain--personal-knowledge-and-automation) |
 | Sleep staging | Intracranial EEG evaluation pipeline comparing classical ML with SleepSEEG | scikit-learn, MNE; patient-held-out evaluation and benchmark debugging | Research source private; [results summary](#research--intracranial-eeg-sleep-staging) |
 | Kubera | Paper-trading arena that races NSE strategy variants in simulated accounts and ranks them by the lower bound of a bootstrap 95% CI on expectancy | Python, pandas, FastAPI, React; walk-forward validation, backtest-gated Claude Agent SDK agents, offline CI | Private source; [project overview](#kubera--paper-trading-arena) |
@@ -54,6 +54,8 @@ Meridian gives different sources a common graph representation, then validates, 
 - React Studio for navigating and inspecting graph representations.
 
 The engineering challenge is keeping source-specific parsing separate from the shared graph and rendering layers.
+
+Source: [github.com/prithvirajmody/Meridian](https://github.com/prithvirajmody/Meridian) (MIT). [Live demo](https://prithvirajmody.github.io/Meridian/): the Studio running in the browser on Meridian's own package graph.
 
 ## Second Brain — personal knowledge and automation
 
